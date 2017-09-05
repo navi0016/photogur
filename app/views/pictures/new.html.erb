@@ -1,5 +1,15 @@
 <h1>Add a picture</h1>
+  <% if @picture.errors.any? %>
+  <div class="error_messages">
+    <ul><% @picture.errors.full_messages.each do |error| %>
+      <li>  <%= error %> </li>
+        <% end %>
+    </ul>
+  </div>
+  <% end %>
+
 <%= link_to("Back to Pictures", "/pictures") %>
+
 <%= form_for(@picture) do |f| %>
   <p>
     <%= f.label :artist %><br>
