@@ -12,4 +12,10 @@ class Picture < ApplicationRecord
    Picture.where("created_at < ?", time)
  end
 
+ def self.created_in_year(year)
+   year_start = Date.parse("#{year}-01-01")
+   year_end = Date.parse("#{year}-12-31")
+   Picture.where("created_at >= ? AND created_at <= ?", year_start, year_end)
+ end
+
 end

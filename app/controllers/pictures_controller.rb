@@ -2,6 +2,13 @@ class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
     @most_recent_pictures = Picture.most_recent_five
+    years = Picture.pluck(:created_at).map{|x| x.year}.uniq
+    @pics_by_year = years.map do |year|
+      {
+        year: year,
+        pics: Picture.created_in_year(year)
+      }
+    end
   end
 
   def show
