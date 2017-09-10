@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   delete 'pictures/:id' => 'pictures#destroy'
 
   resource :users, only: %i(create new)
+  resource :sessions, only: %i(create new destroy)
 
 end
